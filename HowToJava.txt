@@ -1,0 +1,13 @@
+Java Stolpersteine
+
+Ubuntu
+export CLASSPATH=.:/usr/share/java/mysql-connector-java-8.0.19.jar
+
+data.txt (in sba-Verzeichnis, verwendet in ConnectDB.class)
+enthält die Zugangsdaten zur Datenbank (kann editiert werden)
+Reihenfolge wichtig:
+1. Zeile: Datenbank-Zugriff
+2. Zeile: username
+3. Zeile: password
+4. Zeile: jdbc-Drivername
+alle weiteren Zeilen werden ignoriert

@@ -1,0 +1,5 @@
+jdbc:mysql://localhost/sba2019
+lehrer
+jon96as12
+com.mysql.cj.jdbc.Driver
+com.mysql.jdbc.Driver

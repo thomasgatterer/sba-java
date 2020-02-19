@@ -1,0 +1,126 @@
+A
+vom db_sba Ordner aus java sba.sba aufrufen
+
+Mysql Server aufsetzen und eine datenbank anlegen mit den Zugangsdaten für den Benutzer Lehrer siehe unten
+Datenbank files:
+
+sba2012/1d.MYI      -----      1024  07-Apr-2012 15:09  Deflated     12,2%
+sba2012/2a.frm      -----      8798  07-Apr-2012 15:09  Deflated      3,5%
+sba2012/2a.MYD      -----       688  07-Apr-2012 15:09  Deflated     68,5%
+sba2012/2a.MYI      -----      1024  07-Apr-2012 15:09  Deflated     12,2%
+sba2012/2b.frm      -----      8798  07-Apr-2012 15:09  Deflated      3,5%
+sba2012/2b.MYD      --
+Nach internet Anleitung einfügen.
+Und Zugang Testen.
+
+B
+tomm@tomm-Lenovo-G70-70:~/devlopTomm/sbaagi/db_sba$ javac sba/*.java
+Note: sba/Frame.java uses or overrides a deprecated API.
+Note: Recompile with -Xlint:deprecation for details.
+tomm@tomm-Lenovo-G70-70:~/devlopTomm/sbaagi/db_sba$ javac sba/*.java -Xlint:deprecation for details.
+
+tomm@tomm-Lenovo-G70-70:~/devlopTomm/sbaagi/db_sba$ javac sba/*.java -Xlint:deprecation 
+sba/Frame.java:780: warning: [deprecation] show() in Dialog has been deprecated
+		dlg.show();
+		   ^
+B Lösung:
+		//\/\/\/\/\/\/ tg start
+		//dlg.show(); changed with
+		dlg.setVisible(true);
+		//-------tg dlg.show(); end
+
+
+C Datenbak Verbindungsproblem!?
+
+https://help.ubuntu.com/community/JDBCAndMySQL
+
+CLASSPATH=$CLASSPATH:/usr/share/java/mysql-connector-java.jar 
+export CLASSPATH
+
+CLASSPATH=$CLASSPATH:/usr/share/java/mysql.jar
+export CLASSPATH
+
+Alternatively, you can set it for all users, by editing /etc/environment (use sudo - sudo vi /etc/environment)
+
+CLASSPATH=".:/usr/share/java/mysql.jar"
+
+Log out and Log in again. (If you only edited /home/[user]/.bashrc you don't need to log out/in, only execute in a terminal "$source .bashrc" in your home dir). Start up a terminal and type: 
+
+
+D
+java.lang.NullPointerException
+	at javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at sba.Frame.jbInit(Frame.java:182)
+	at sba.Frame.<init>(Frame.java:166)
+	at sba.anmeldung.<init>(anmeldung.java:37)
+	at sba.sba.main(sba.java:67)
+java.lang.NullPointerException
+	at javax.swing.ImageIcon.<init>(ImageIcon.java:217)
+	at sba.Frame.jbInit(Frame.java:182)
+	at sba.Frame.<init>(Frame.java:166)
+	at sba.anmeldung.<init>(anmeldung.java:25)
+	at sba.sba.main(sba.java:67)
+
+D Lösung 
+tomm@tomm-Lenovo-G70-70:~/devlopTomm/sbaagi/db_sba/sba$ mv HELP.GIF help.gif
+
+
+E Verbindung zum mysql server setzen und vereinheitlichen
+E Lösung1: 
+NEUE Klassenmethode
+
+	private Connection getDBconnection(){
+		Connection connec=null;
+		try{
+			sjstr = schuljahrtxt.getText();
+			//String url = "jdbc:mysql://server:3306/sba" + sjstr;
+			String url = "jdbc:mysql://127.0.0.1/sba";
+			Class.forName("com.mysql.jdbc.Driver");
+			connec = DriverManager.getConnection(url, "lehrer",
+					"jon.....");
+		}			
+		catch (java.lang.Exception fehler){
+			fehler.printStackTrace();
+		}
+		return connec;
+	}
+---------------------------------------------
+
+DAS:
+			sjstr = schuljahrtxt.getText();
+			String url = "jdbc:mysql://server:3306/sba" + sjstr;
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection con = DriverManager.getConnection(url, "lehrer",
+					"jon.....");
+
+
+
+E Lösung2: 
+NEUE Klasse: ConnectDB.java
+
+ALLE DB Verbindungen mit:
+
+		ConnectDB conobj = new ConnectDB();
+		Connection con = conobj.getDBconnection();
+
+Starten
+
+
+--------------------------------------
+
+Fehler:
+Cannot connect to database server
+java.lang.ClassNotFoundException: com.mysql.jdbc.Driver
+
+
+CLASSPATH=$CLASSPATH:/usr/share/java/mysql.jar
+export CLASSPATH
+
+
+----------------------------------
+Lehrer ind der DB in lehrer umbenannt!
+
+
+
+
+

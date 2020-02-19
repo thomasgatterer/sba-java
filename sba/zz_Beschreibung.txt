@@ -1,0 +1,15 @@
+Diese Version ist vom 6.9.2016
+
+Hauptänderung:
+Wegen Umstellung in der Schule - Neuinstallation UBUNTU - wurden alle Datenbankzugriffe (früher "cd", nun auf "server") verändert auf:
+
+Folgende zwei Zeilen mussten für UBUNTU abgeändert werden
+
+url = "jdbc:mysql://server:3306/sba" + sjstr;
+Class.forName("com.mysql.jdbc.Driver");
+
+für WINDOWS
+
+url = "jdbc:odbc:sba"+sjstr;
+Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
+
