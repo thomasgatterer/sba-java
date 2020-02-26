@@ -1,6 +1,7 @@
 package sba;
 
 import java.io.FileWriter;
+import javax.swing.JFileChooser;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -123,9 +124,21 @@ public class druck_buch extends Frame {
 			text = "";
 		}
 
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		String pfadundNameohneEndung = null;
+	        // Dialog zum Oeffnen von Dateien anzeigen	
+	        int rueckgabeWert = chooser.showSaveDialog(null);
+	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
+	        {
+			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
+			// Ausgabe der ausgewaehlten Datei
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+		    
+	        }
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(
-					"/home/andreas/db_sba/Buchlisten.odt");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
 
 			try { // try 1
 				
@@ -349,7 +362,7 @@ public class druck_buch extends Frame {
 						null,
 						"Es wurden "
 								+ buch_ges
-								+ " Bücher eingegeben auf /home/andreas/db_sba/Buchliste.odt geschrieben");
+								+ " Bücher eingegeben auf "+ pfadundNameohneEndung+".odt geschrieben");
 
 		new druck_schulstufe(sjstr);
 	}

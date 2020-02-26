@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JFileChooser;
 
 import javax.swing.JOptionPane;
 
@@ -54,9 +55,24 @@ public class druck_schulstufe extends Frame {
 			text = "";
 		}
 
+				
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		String pfadundNameohneEndung = null;
+	        // Dialog zum Oeffnen von Dateien anzeigen	
+	        int rueckgabeWert = chooser.showSaveDialog(null);
+	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
+	        {
+			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
+			// Ausgabe der ausgewaehlten Datei
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+		    
+	        }
+
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(
-					"/home/andreas/db_sba/Schulstufeliste.odt");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
+
 			try { // try 1
 				ConnectDB conobj = new ConnectDB();
 				Connection con = conobj.getDBconnection();
@@ -142,6 +158,6 @@ public class druck_schulstufe extends Frame {
 		JOptionPane
 				.showMessageDialog(
 						null,
-						"Es wurde die Schulstufeliste geschrieben auf /home/andreas/db_sba/Schulstufeliste.odt");
+						"Es wurde die Schulstufeliste geschrieben auf "+ pfadundNameohneEndung+".odt");
 	}
 }

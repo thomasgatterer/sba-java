@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JFileChooser;
 
 import javax.swing.JOptionPane;
 //import java.net.URL;
@@ -63,10 +64,24 @@ public class druck_fach extends Frame {
 		} catch (java.lang.Exception ex) {
 			text = "";
 		}
+		
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		String pfadundNameohneEndung = null;
+	        // Dialog zum Oeffnen von Dateien anzeigen	
+	        int rueckgabeWert = chooser.showSaveDialog(null);
+	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
+	        {
+			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
+			// Ausgabe der ausgewaehlten Datei
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+		    
+	        }
+
 
 		try {// Anfang try 0
-			FileWriter files = new FileWriter(
-					"/home/andreas/db_sba/Fachlisten.odt");
+			FileWriter files = new FileWriter(pfadundNameohneEndung+ ".odt");
 			try { // try 1
 				
 				
@@ -218,6 +233,6 @@ public class druck_fach extends Frame {
 						null,
 						"Bücher für "
 								+ counting
-								+ " Fächer auf /home/andreas/db_sba/Fachlisten.odt geschrieben !");
+								+ " Fächer auf "+ pfadundNameohneEndung+".odt geschrieben !");
 	}
 }

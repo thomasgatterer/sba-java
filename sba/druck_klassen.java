@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JFileChooser;
 
 import javax.swing.JOptionPane;
 //import java.net.URL;
@@ -68,13 +69,26 @@ public class druck_klassen extends Frame {
 		} catch (java.lang.Exception ex) {
 			text = "";
 		}
+		
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		String pfadundNameohneEndung = null;
+	        // Dialog zum Oeffnen von Dateien anzeigen	
+	        int rueckgabeWert = chooser.showSaveDialog(null);
+	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
+	        {
+			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
+			// Ausgabe der ausgewaehlten Datei
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+		    
+	        }
 
 		int klcb_row = klcb.getItemCount();
 		int j = 0;
 
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(
-					"/home/andreas/db_sba/Klassenlisten.odt");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
 
 			for (j = 0; j < klcb_row; j++) {
 				klcb.setSelectedIndex(j);
@@ -239,6 +253,6 @@ public class druck_klassen extends Frame {
 								+ buch_ges
 								+ " Bücher eingegeben und "
 								+ klcb_row
-								+ " Klassenlisten auf /home/andreas/db_sba/Klassenlisten.odt erstellt");
+								+ " Klassenlisten auf "+ pfadundNameohneEndung+".odt erstellt");
 	}
 }

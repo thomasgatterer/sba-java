@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
 /**
@@ -58,10 +59,23 @@ public class druck_lehrer extends Frame {
 		} catch (java.lang.Exception ex) {
 			text = "\f";
 		}
+		
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		String pfadundNameohneEndung = null;
+	        // Dialog zum Oeffnen von Dateien anzeigen	
+	        int rueckgabeWert = chooser.showSaveDialog(null);
+	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
+	        {
+			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
+			// Ausgabe der ausgewaehlten Datei
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+		    
+	        }
 
 		try {// Anfang try 0
-			FileWriter files = new FileWriter(
-					"/home/andreas/db_sba/Lehrer_LH.odt");
+			FileWriter files = new FileWriter(pfadundNameohneEndung+ ".odt");
 			try { // try 1
 
 				Statement stmt = con.createStatement();
@@ -253,6 +267,6 @@ public class druck_lehrer extends Frame {
 						null,
 						"Bücher für "
 								+ counting
-								+ " Lehrer und Handexemplare auf /home/andreas/db_sba/Lehrer_LH.odt geschrieben !");
+								+ " Lehrer und Handexemplare auf "+ pfadundNameohneEndung+".odt geschrieben !");
 	}// Ende public
 }// Ende class

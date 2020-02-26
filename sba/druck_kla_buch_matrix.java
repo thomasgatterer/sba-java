@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import javax.swing.JFileChooser;
 
 import javax.swing.JOptionPane;
 //import java.net.URL;
@@ -67,11 +68,24 @@ public class druck_kla_buch_matrix extends Frame {
 		} catch (java.lang.Exception ex) {
 			text = "";
 		}
+		
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		String pfadundNameohneEndung = null;
+	        // Dialog zum Oeffnen von Dateien anzeigen	
+	        int rueckgabeWert = chooser.showSaveDialog(null);
+	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
+	        {
+			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
+			// Ausgabe der ausgewaehlten Datei
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+		    
+	        }
+
 
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(
-					"/home/andreas/db_sba/Kla_Buch_Matrix.ods");
-
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
 			try { // try 1
 				ConnectDB conobj = new ConnectDB();
 				Connection con = conobj.getDBconnection();
@@ -280,6 +294,6 @@ public class druck_kla_buch_matrix extends Frame {
 						null,
 						"Es wurden "
 								+ buch_ges
-								+ " Bücher eingegeben auf /home/andreas/db_sba/Kla_Buch_Matrix.ods geschrieben");
+								+ " Bücher eingegeben auf "+ pfadundNameohneEndung+".ods geschrieben");
 	}
 }

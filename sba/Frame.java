@@ -24,6 +24,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.StringTokenizer;
+import javax.swing.JFileChooser;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -2748,9 +2749,23 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 		String lehrertest = lehrer, benutzer[] = new String[200], pwdbenutzer[] = new String[200];
 		int allow = lehrertest.compareTo("ADM");
 		int l = 0, anz_lehrer = 0;
+
+
+		JFileChooser chooser = new JFileChooser();
+		chooser.setDialogType(JFileChooser.SAVE_DIALOG);
+		String pfadundNameohneEndung = null;
+	        // Dialog zum Oeffnen von Dateien anzeigen	
+	        int rueckgabeWert = chooser.showSaveDialog(null);
+	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
+	        {
+			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
+			// Ausgabe der ausgewaehlten Datei
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+		}
 		if (allow == 0) {
 			try {
-				FileWriter file = new FileWriter("/home/andreas/db_sba/pwd.odt");
+				FileWriter file = new FileWriter(pfadundNameohneEndung+ ".odt");
 				output.setText("");
 				try {
 					sjstr = schuljahrtxt.getText();
