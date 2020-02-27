@@ -66,12 +66,12 @@ public class druck_schulstufe extends Frame {
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
 		    
 	        }
 
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".doc");
 
 			try { // try 1
 				ConnectDB conobj = new ConnectDB();
@@ -158,6 +158,6 @@ public class druck_schulstufe extends Frame {
 		JOptionPane
 				.showMessageDialog(
 						null,
-						"Es wurde die Schulstufeliste geschrieben auf "+ pfadundNameohneEndung+".odt");
+						"Es wurde die Schulstufeliste geschrieben auf "+ pfadundNameohneEndung+".doc");
 	}
 }

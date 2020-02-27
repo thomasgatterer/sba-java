@@ -134,11 +134,11 @@ public class druck_buch extends Frame {
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
 		    
 	        }
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".doc");
 
 			try { // try 1
 				
@@ -362,7 +362,7 @@ public class druck_buch extends Frame {
 						null,
 						"Es wurden "
 								+ buch_ges
-								+ " Bücher eingegeben auf "+ pfadundNameohneEndung+".odt geschrieben");
+								+ " Bücher eingegeben auf "+ pfadundNameohneEndung+".doc geschrieben");
 
 		new druck_schulstufe(sjstr);
 	}

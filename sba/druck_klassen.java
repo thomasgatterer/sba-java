@@ -80,7 +80,7 @@ public class druck_klassen extends Frame {
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
 		    
 	        }
 
@@ -88,7 +88,7 @@ public class druck_klassen extends Frame {
 		int j = 0;
 
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".doc");
 
 			for (j = 0; j < klcb_row; j++) {
 				klcb.setSelectedIndex(j);
@@ -253,6 +253,6 @@ public class druck_klassen extends Frame {
 								+ buch_ges
 								+ " Bücher eingegeben und "
 								+ klcb_row
-								+ " Klassenlisten auf "+ pfadundNameohneEndung+".odt erstellt");
+								+ " Klassenlisten auf "+ pfadundNameohneEndung+".doc erstellt");
 	}
 }

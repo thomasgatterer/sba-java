@@ -79,13 +79,13 @@ public class druck_kla_buch_matrix extends Frame {
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
 		    
 	        }
 
 
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".odt");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".doc");
 			try { // try 1
 				ConnectDB conobj = new ConnectDB();
 				Connection con = conobj.getDBconnection();

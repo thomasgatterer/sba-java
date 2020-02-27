@@ -2761,11 +2761,11 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
 		}
 		if (allow == 0) {
 			try {
-				FileWriter file = new FileWriter(pfadundNameohneEndung+ ".odt");
+				FileWriter file = new FileWriter(pfadundNameohneEndung+ ".doc");
 				output.setText("");
 				try {
 					sjstr = schuljahrtxt.getText();
@@ -3093,7 +3093,7 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 					.showMessageDialog(
 							null,
 							l
-									+ " Benutzer und Passwörter auf /home/andreas/db_sba/pwd.odt geschrieben !");
+									+ " Benutzer und Passwörter auf /home/andreas/db_sba/pwd.doc geschrieben !");
 		} else
 			JOptionPane.showMessageDialog(null, "Keine Berechtigung");
 	}

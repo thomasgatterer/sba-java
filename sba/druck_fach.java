@@ -75,13 +75,13 @@ public class druck_fach extends Frame {
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".odt");
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
 		    
 	        }
 
 
 		try {// Anfang try 0
-			FileWriter files = new FileWriter(pfadundNameohneEndung+ ".odt");
+			FileWriter files = new FileWriter(pfadundNameohneEndung+ ".doc");
 			try { // try 1
 				
 				
@@ -233,6 +233,6 @@ public class druck_fach extends Frame {
 						null,
 						"Bücher für "
 								+ counting
-								+ " Fächer auf "+ pfadundNameohneEndung+".odt geschrieben !");
+								+ " Fächer auf "+ pfadundNameohneEndung+".doc geschrieben !");
 	}
 }
