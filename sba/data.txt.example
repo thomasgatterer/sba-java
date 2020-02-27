@@ -1,5 +1,6 @@
 jdbc:mysql://10.1.1.1/sba2020
 mysqluser
-mysqlpasswordcom.mysql.jdbc.Driver
+mysqlpassword
+com.mysql.jdbc.Driver
 com.mysql.cj.jdbc.Driver
 
