@@ -66,7 +66,7 @@ public class berechnen extends Frame {
 				ResultSet rs1 = stmt
 						.executeQuery("SELECT * FROM klassen ORDER BY Klasse");
 				while (rs1.next()) {
-					klassenanzahl[j] = rs1.getString("Klasse");
+					klassenanzahl[j] = rs1.getString("Klasse").toLowerCase();
 					j++;
 				}
 				klcb_row = j;
