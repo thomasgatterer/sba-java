@@ -1426,6 +1426,7 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 				for (j = 0; j < klcb_row; j++) {
 					klcb.setSelectedIndex(j);
 					klassecb = (String) klcb.getSelectedItem();
+					klassecb = klassecb.toLowerCase();
 					ResultSet rs = stmt.executeQuery("SELECT * FROM "
 							+ klassecb + " WHERE Lehrer = '" + lehrer
 							+ "' ORDER BY Fach");
@@ -1584,7 +1585,8 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 				ConnectDB conobj = new ConnectDB();
 				Connection con = conobj.getDBconnection();
 				Statement stmt = con.createStatement();
-				klassestr = klassecb;
+				klassestr = klassecb.toLowerCase();
+
 				ResultSet rs = stmt.executeQuery("SELECT * FROM " + klassestr
 						+ " ORDER BY Fach");
 				output.setText("Das Ergebnis der Abfrage für die "
@@ -1770,6 +1772,7 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 							null,
 							"Bitte Nummer (nur ZIFFERNFOLGE), Titel, Preis, Fach und Klasse (z.B. 1a) eingeben");
 			UeW.setState(false);
+
 		} else { // else-Zweig 1
 			if (uew == true) {
 				String nrinuew = nrtxt.getText();
@@ -1921,6 +1924,7 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 					if (anhang_liste_sbxk == 0)
 						fachin = "XK-" + fachin;
 					String klassein = klassetxt;
+					klassein = klassein.toLowerCase();
 					int lehrertest_zahl_0 = 0;
 					ResultSet test = stmt.executeQuery("SELECT * FROM "
 							+ klassein + " ORDER BY Fach");
@@ -2092,7 +2096,6 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 										"Hinweis: SBX-Bücher können in diesem Schuljahr nicht bestellt werden!");
 
 					umbenennen(klassein);
-
 					fachcb.setSelectedIndex(0);
 					nrtxt.setText("");
 					titeltxt.setText("");
@@ -2125,6 +2128,7 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 			Connection con = conobj.getDBconnection();
 			Statement stmt = con.createStatement();
 			int klassein_zahl = klassein.compareTo("LehrerHand");
+			klassein = klassein.toLowerCase();
 			if (klassein_zahl == 0)
 				test1 = stmt.executeQuery("SELECT * FROM " + klassein
 						+ " ORDER BY Jahr,Lehrer");
@@ -2197,7 +2201,7 @@ public class Frame extends JFrame implements ActionListener, ItemListener {
 				Connection con = conobj.getDBconnection();
 				Statement stmt = con.createStatement();
 				String nrin = nrtxt.getText();
-				String klassein = klassetxt;
+				String klassein = klassetxt.toLowerCase();
 				ResultSet test = stmt.executeQuery("SELECT * FROM " + klassein);
 				while (test.next()) {
 					String nrtest = test.getString(2);
