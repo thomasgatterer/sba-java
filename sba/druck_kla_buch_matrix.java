@@ -79,13 +79,13 @@ public class druck_kla_buch_matrix extends Frame {
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
+	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".xls");
 		    
 	        }
 
 
 		try {// try 0
-			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".doc");
+			FileWriter klassenfile = new FileWriter(pfadundNameohneEndung+ ".xls");
 			try { // try 1
 				ConnectDB conobj = new ConnectDB();
 				Connection con = conobj.getDBconnection();
@@ -294,6 +294,6 @@ public class druck_kla_buch_matrix extends Frame {
 						null,
 						"Es wurden "
 								+ buch_ges
-								+ " Bücher eingegeben auf "+ pfadundNameohneEndung+".ods geschrieben");
+								+ " Bücher eingegeben auf "+ pfadundNameohneEndung+".xls geschrieben");
 	}
 }
