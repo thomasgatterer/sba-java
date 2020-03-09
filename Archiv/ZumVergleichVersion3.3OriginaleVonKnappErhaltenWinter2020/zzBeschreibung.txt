@@ -1,0 +1,10 @@
+Dies ist eine Änderung der Version3.2 - durchgeführt am 28. März 2014
+
+GRUND: Buchlisten/Schulbuchlisten
+
+- In der "druck_buch" wurde bei ... ORDER BY (Schulstufe - gelöscht) NR); somit wird in Buchliste nach NR sortiert
+vgl. Zeile 103       ResultSet rs = stmt.executeQuery("SELECT * FROM Buecher_gesamt ORDER BY Nr");
+
+- in Schulstufeliste nach Klassen/Nr
+
+- in Fachlisten wurde der Seitenumbruch entfernt, der erfolgte, falls beim Text auf "Abbruch" geklickt wurde. Nun steht dort einfach ein Leerzeichen "".
