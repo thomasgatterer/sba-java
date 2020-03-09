@@ -144,7 +144,7 @@ public class druck_fach extends Frame {
 						}// Ende for Schleife
 
 						stmts.close();
-						con.close();
+						//con.close();
 					}// Ende von try 2
 					catch (Exception exeption) {
 						exeption.printStackTrace();

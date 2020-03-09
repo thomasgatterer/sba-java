@@ -12,10 +12,10 @@ import javax.swing.JOptionPane;
 
 /**
  * <p>
- * Überschrift: Schulbuchaktion
+ * Ueberschrift: Schulbuchaktion
  * </p>
  * <p>
- * Beschreibung: Programm für die Eingabe und Bearbeitung für
+ * Beschreibung: Programm fuer die Eingabe und Bearbeitung fuer
  * Schulbuchreferenten
  * </p>
  * <p>
@@ -65,23 +65,23 @@ public class druck_lehrer extends Frame {
 		String pfadundNameohneEndung = null;
 	        // Dialog zum Oeffnen von Dateien anzeigen	
 	        int rueckgabeWert = chooser.showSaveDialog(null);
-	        /* Abfrage, ob auf "Öffnen" geklickt wurde */
+	        /* Abfrage, ob auf "oeffnen" geklickt wurde */
 	        if(rueckgabeWert == JFileChooser.APPROVE_OPTION)
 	        {
 			pfadundNameohneEndung = chooser.getSelectedFile().getAbsolutePath();
 			// Ausgabe der ausgewaehlten Datei
-	            	//tg System.out.println("Die zu öffnende Datei ist: " + pfadundNameohneEndung + ".doc");
+	            	//tg System.out.println("Die zu oeffnende Datei ist: " + pfadundNameohneEndung + ".doc");
 		    
 	        }
 
 		try {// Anfang try 0
 			FileWriter files = new FileWriter(pfadundNameohneEndung+ ".doc");
+
 			try { // try 1
 
 				Statement stmt = con.createStatement();
 				ResultSet kol = stmt
 						.executeQuery("SELECT * FROM lehrer ORDER BY ID");
-
 				while (kol.next()) {// Beginn while 0
 					String lehrer = kol.getString(2);
 
@@ -103,14 +103,13 @@ public class druck_lehrer extends Frame {
 
 					try { // Anfang try 2
 						
-						
 						Statement stmts = con.createStatement();
 
 						for (j = 0; j < klcb_row; j++) {
 							klcb.setSelectedIndex(j);
 							klassecb = (String) klcb.getSelectedItem();
 							ResultSet rs = stmts.executeQuery("SELECT * FROM "
-									+ klassecb + " WHERE Lehrer = '" + lehrer
+									+ klassecb + " WHERE lehrer = '" + lehrer
 									+ "' ORDER BY Fach");
 							while (rs.next()) {
 								klassecbtmp[x] = klassecb;
@@ -151,7 +150,6 @@ public class druck_lehrer extends Frame {
 							anz_LH++;
 						}
 						stmts.close();
-						con.close();
 					}// Ende von try 2
 					catch (Exception exeption) {
 						exeption.printStackTrace();
@@ -164,9 +162,9 @@ public class druck_lehrer extends Frame {
 					v = 0;
 					x = 0;
 
-					files.write("LISTE ZUR KONTROLLE DER EINGEGEBENEN BÜCHER "
+					files.write("LISTE ZUR KONTROLLE DER EINGEGEBENEN BueCHER "
 							+ date + " !\n\n");
-					files.write("Eingegebene Bücher von " + lehrer
+					files.write("Eingegebene Buecher von " + lehrer
 							+ " zur Schulbuchaktion (" + (char) 169
 							+ " A.Knapp)\n\n");
 					files.write("Nr.\t\tKurztitel d. Buches\t\t\t\tPreis\tFach\tW\tKlasse\n"
@@ -205,7 +203,7 @@ public class druck_lehrer extends Frame {
 						v++;
 						x++;
 					}
-					files.write("\n \nAnzahl der eingegebenen Bücher: "
+					files.write("\n \nAnzahl der eingegebenen Buecher: "
 							+ count_buch + "\n \n");
 
 					files.write("Eingegebene Lehrer-Handexemplare von "
@@ -265,7 +263,7 @@ public class druck_lehrer extends Frame {
 		JOptionPane
 				.showMessageDialog(
 						null,
-						"Bücher für "
+						"Buecher fuer "
 								+ counting
 								+ " Lehrer und Handexemplare auf "+ pfadundNameohneEndung+".doc geschrieben !");
 	}// Ende public
